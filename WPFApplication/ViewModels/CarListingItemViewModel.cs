@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using WPFApplication.Commands;
-using WPFApplication.Models;
+using WPFApplication.Domain.Models;
 using WPFApplication.Stores;
 
 namespace WPFApplication.ViewModels

@@ -1,5 +1,5 @@
 ﻿using System;
-using WPFApplication.Models;
+using WPFApplication.Domain.Models;
 
 namespace WPFApplication.Stores
 {

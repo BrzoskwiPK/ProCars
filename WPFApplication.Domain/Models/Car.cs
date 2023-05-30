@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WPFApplication.Models
+﻿namespace WPFApplication.Domain.Models
 {
     public class Car
     {

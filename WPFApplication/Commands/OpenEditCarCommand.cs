@@ -1,4 +1,4 @@
-﻿using WPFApplication.Models;
+﻿using WPFApplication.Domain.Models;
 using WPFApplication.Stores;
 using WPFApplication.ViewModels;
 

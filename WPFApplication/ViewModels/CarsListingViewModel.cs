@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using WPFApplication.Models;
+using WPFApplication.Domain.Models;
 using WPFApplication.Stores;
 
 namespace WPFApplication.ViewModels

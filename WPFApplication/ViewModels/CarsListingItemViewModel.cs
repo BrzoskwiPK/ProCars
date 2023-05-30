@@ -18,9 +18,10 @@ namespace WPFApplication.ViewModels
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
-        public CarListingItemViewModel(Car car)
+        public CarListingItemViewModel(Car car, ICommand editCommand)
         {
             Car = car;
+            EditCommand = editCommand;
         }
     }
 }

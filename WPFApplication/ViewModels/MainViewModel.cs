@@ -22,7 +22,7 @@ namespace WPFApplication.ViewModels
 
             _modalNavigationStore.CurrentViewModelChanged += ModalNavigationStore_CurrentViewModelChanged;
 
-            _modalNavigationStore.CurrentViewModel = new AddCarViewModel();
+            _modalNavigationStore.CurrentViewModel = new AddCarViewModel(_modalNavigationStore);
         }
 
         protected override void Dispose()

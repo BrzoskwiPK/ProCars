@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WPFApplication.Commands;
+using WPFApplication.Stores;
 
 namespace WPFApplication.ViewModels
 {
@@ -11,9 +13,10 @@ namespace WPFApplication.ViewModels
     {
         public CarDetailsFormViewModel CarDetailsFormViewModel { get; }
 
-        public AddCarViewModel()
-        { 
-            CarDetailsFormViewModel = new CarDetailsFormViewModel();
+        public AddCarViewModel(ModalNavigationStore modalNavigationStore)
+        {
+            ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
+            CarDetailsFormViewModel = new CarDetailsFormViewModel(null, cancelCommand);
         }
     }
 }

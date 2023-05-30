@@ -20,7 +20,7 @@ namespace WPFApplication
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            CarsViewModel carsViewModel = new CarsViewModel(_selectedCarStore);
+            CarsViewModel carsViewModel = new CarsViewModel(_selectedCarStore, _modalNavigationStore);
 
             MainWindow = new MainWindow()
             {

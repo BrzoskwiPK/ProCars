@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:custom="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
-             xmlns:viewmodels="clr-namespace:WPFApplication.ViewModels"
-             xmlns:local="clr-namespace:WPFApplication.Components"
+             xmlns:viewmodels="clr-namespace:WPFApplication.ViewModels" xmlns:local="clr-namespace:WPFApplication.Components"
              d:DataContext="{d:DesignInstance Type=viewmodels:CarsListingViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -23,9 +21,7 @@
                     Background="White"
                     CornerRadius="5" />
 
-                <ListView BorderThickness="0"
-                          SelectedItem="{Binding SelectedCarListingItemViewModel}"
-                          ItemsSource="{Binding CarsListingItemViewModels}">
+                <ListView BorderThickness="0" SelectedItem="{Binding SelectedCarListingItemViewModel}" ItemsSource="{Binding CarsListingItemViewModels}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -33,74 +29,7 @@
                     </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Padding="10"
-                                    TextBlock.FontSize="16">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" Text="{Binding Make}" />
-
-                                    <custom:DropdownMenu Grid.Column="1"
-                                                  Margin="10 0 0 0">
-                                        <Border Background="White" BorderBrush="Gray" BorderThickness="1">
-                                            <StackPanel MinWidth="125">
-                                                <StackPanel.Resources>
-                                                    <Style TargetType="Button">
-                                                        <Setter Property="Background" Value="#9e9e9e" />
-                                                        <Setter Property="Foreground" Value="Black" />
-                                                        <Setter Property="FontWeight" Value="Bold" />
-                                                        <Setter Property="Padding" Value="15 10" />
-                                                        <Setter Property="Cursor" Value="Hand" />
-
-                                                        <Setter Property="Template">
-                                                            <Setter.Value>
-                                                                <ControlTemplate TargetType="Button">
-                                                                    <Border
-                                                                            Background="{TemplateBinding Background}"
-                                                                            Margin="{TemplateBinding Margin}"
-                                                                            Padding="{TemplateBinding Padding}">
-                                                                        <ContentPresenter />
-                                                                    </Border>
-                                                                </ControlTemplate>
-                                                            </Setter.Value>
-                                                        </Setter>
-
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Trigger.EnterActions>
-                                                                    <BeginStoryboard>
-                                                                        <Storyboard>
-                                                                            <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                                                                            To="#c9c9c9"
-                                                                                            Duration="0:0:0.1" />
-                                                                        </Storyboard>
-                                                                    </BeginStoryboard>
-                                                                </Trigger.EnterActions>
-                                                                <Trigger.ExitActions>
-                                                                    <BeginStoryboard>
-                                                                        <Storyboard>
-                                                                            <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                                                                            To="#9e9e9e"
-                                                                                            Duration="0:0:0.1" />
-                                                                        </Storyboard>
-                                                                    </BeginStoryboard>
-                                                                </Trigger.ExitActions>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </StackPanel.Resources>
-                                                <Button Content="EDIT"
-                                                        Command="{Binding EditCommand}"/>
-                                                <Button Content="DELETE"
-                                                        Command="{Binding DeleteCommand}"/>
-                                            </StackPanel>
-                                        </Border>
-                                    </custom:DropdownMenu>
-                                </Grid>
-                            </Border>
+                            <local:CarsListingItem />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

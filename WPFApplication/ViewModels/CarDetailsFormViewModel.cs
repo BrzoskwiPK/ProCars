@@ -17,6 +17,12 @@ namespace WPFApplication.ViewModels
         private string _engine;
         private decimal _price;
 
+        public CarDetailsFormViewModel(ICommand submitCommand, ICommand cancelCommand)
+        {
+            SubmitCommand = submitCommand;
+            CancelCommand = cancelCommand;
+        }
+
         public string Make
         {
             get
@@ -125,6 +131,7 @@ namespace WPFApplication.ViewModels
             !Year.Equals(null);
 
         public ICommand SubmitCommand { get; }
+
         public ICommand CancelCommand { get; }
     }
 }

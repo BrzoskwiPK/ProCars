@@ -18,9 +18,15 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="ProCars" Style="{StaticResource PageHeader}" Margin="20 0 0 0" FontWeight="UltraBold"/>
+            <TextBlock Grid.Column="0"
+                       Text="ProCars"
+                       Style="{StaticResource PageHeader}"
+                       Margin="20 0 0 0"
+                       FontWeight="UltraBold" />
 
-            <Button Grid.Column="1" Content="ADD" />
+            <Button Grid.Column="1"
+                    Content="ADD"
+                    Command="{Binding AddCarCommand}" />
         </Grid>
 
         <Grid Grid.Row="1" Margin="0 20 0 0">
@@ -30,10 +36,12 @@
             </Grid.ColumnDefinitions>
 
             <components:CarsListing Grid.Column="0"
-                                    Margin="20" />
+                                    Margin="20"
+                                    DataContext="{Binding CarsListingViewModel}" />
             
             <components:CarsDetails Grid.Column="1"
-                                    Margin="20" />
+                                    Margin="20"
+                                    DataContext="{Binding CarsDetailsViewModel}" />
 
         </Grid>
     </Grid>

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WPFApplication.ViewModels;
 
 namespace WPFApplication
 {
@@ -9,7 +10,11 @@ namespace WPFApplication
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow = new MainWindow();
+            MainWindow = new MainWindow()
+            {
+                DataContext = new CarsViewModel()
+            };
+
             MainWindow.Show();
 
             base.OnStartup(e);

@@ -24,7 +24,7 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="Make"
+                    <TextBlock Text="{Binding Make}"
                            FontSize="32"
                            FontWeight="Bold"
                            Grid.Row="0" />
@@ -40,7 +40,7 @@
                                FontWeight="Bold" />
 
                         <TextBlock Grid.Column="1"
-                               Text="Toyota"
+                               Text="{Binding Model}"
                                Margin="20 0 0 0" />
                     </Grid>
 
@@ -55,7 +55,7 @@
                                FontWeight="Bold" />
 
                         <TextBlock Grid.Column="1"
-                               Text="1920"
+                               Text="{Binding Year}"
                                Margin="20 0 0 0" />
                     </Grid>
 
@@ -70,7 +70,7 @@
                                FontWeight="Bold" />
 
                         <TextBlock Grid.Column="1"
-                               Text="Red"
+                               Text="{Binding Color}"
                                Margin="20 0 0 0" />
                     </Grid>
 
@@ -85,7 +85,7 @@
                                FontWeight="Bold" />
 
                         <TextBlock Grid.Column="1"
-                               Text="192 000 km"
+                               Text="{Binding Mileage}"
                                Margin="20 0 0 0" />
                     </Grid>
 
@@ -100,7 +100,7 @@
                                FontWeight="Bold" />
 
                         <TextBlock Grid.Column="1"
-                               Text="V8"
+                               Text="{Binding Engine}"
                                Margin="20 0 0 0" />
                     </Grid>
 
@@ -115,7 +115,7 @@
                                FontWeight="Bold" />
 
                         <TextBlock Grid.Column="1"
-                               Text="200k"
+                               Text="{Binding Price}"
                                Margin="20 0 0 0" />
                     </Grid>
                 </Grid>

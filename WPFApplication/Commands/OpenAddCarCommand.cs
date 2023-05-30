@@ -10,16 +10,18 @@ namespace WPFApplication.Commands
 {
     public class OpenAddCarCommand : CommandBase
     {
+        private readonly CarsStore _carsStore;
         private readonly ModalNavigationStore _modalNavigationStore;
 
-        public OpenAddCarCommand(ModalNavigationStore modalNavigationStore)
+        public OpenAddCarCommand(CarsStore carsStore, ModalNavigationStore modalNavigationStore)
         {
+            _carsStore = carsStore;
             _modalNavigationStore = modalNavigationStore;
         }
 
         public override void Execute(object? parameter)
         {
-            AddCarViewModel addCarViewModel = new AddCarViewModel(_modalNavigationStore);
+            AddCarViewModel addCarViewModel = new AddCarViewModel(_carsStore, _modalNavigationStore);
             _modalNavigationStore.CurrentViewModel = addCarViewModel;
         }
     }

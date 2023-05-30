@@ -16,12 +16,12 @@ namespace WPFApplication.ViewModels
 
         public ICommand AddCarCommand { get; }
 
-        public CarsViewModel(SelectedCarStore selectedCarStore, ModalNavigationStore modalNavigationStore)
+        public CarsViewModel(SelectedCarStore selectedCarStore, ModalNavigationStore modalNavigationStore, CarsStore carsStore)
         {
-            CarsListingViewModel = new CarsListingViewModel(selectedCarStore, modalNavigationStore);
+            CarsListingViewModel = new CarsListingViewModel(selectedCarStore, modalNavigationStore, carsStore);
             CarsDetailsViewModel = new CarsDetailsViewModel(selectedCarStore);
 
-            AddCarCommand = new OpenAddCarCommand(modalNavigationStore);
+            AddCarCommand = new OpenAddCarCommand(carsStore, modalNavigationStore);
         }
     }
 }

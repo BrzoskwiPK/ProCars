@@ -13,8 +13,10 @@ namespace WPFApplication.ViewModels
 {
     public class CarsListingViewModel : ViewModelBase
     {
-        private readonly ObservableCollection<CarListingItemViewModel> _carsListingItemViewModels;
+        private readonly ObservableCollection<CarListingItemViewModel> _CarListingItemViewModels;
+        private readonly CarsStore _carsStore;
         private readonly SelectedCarStore _selectedCarStore;
+        private readonly ModalNavigationStore _modalNavigationStore;
         private CarListingItemViewModel _selectedCarListingItemViewModel;
 
         public CarListingItemViewModel SelectedCarListingItemViewModel
@@ -32,22 +34,44 @@ namespace WPFApplication.ViewModels
             }
         }
 
-        public CarsListingViewModel(SelectedCarStore selectedCarStore, ModalNavigationStore modalNavigationStore)
+        public CarsListingViewModel(SelectedCarStore selectedCarStore, ModalNavigationStore modalNavigationStore, CarsStore carsStore)
         {
+            _carsStore = carsStore;
             _selectedCarStore = selectedCarStore;
+            _modalNavigationStore = modalNavigationStore;
+            _CarListingItemViewModels = new ObservableCollection<CarListingItemViewModel>();
 
-            _carsListingItemViewModels = new ObservableCollection<CarListingItemViewModel>();
-            AddCar(new Car(new Guid(), "Toyota", "Supra", 1920, "Red", 192000, "V8", 120000), modalNavigationStore);
-            AddCar(new Car(new Guid(), "BMW", "430i", 2015, "Black", 20000, "3.0", 200000), modalNavigationStore);
-            AddCar(new Car(new Guid(), "BMW", "440i", 2016, "Black", 20000, "3.0", 200000), modalNavigationStore);
+            _carsStore.CarAdded += CarsStore_CarAdded;
+            _carsStore.CarUpdated += CarsStore_CarUpdated;
         }
 
-        public IEnumerable<CarListingItemViewModel> CarsListingItemViewModels => _carsListingItemViewModels;
-
-        private void AddCar(Car car, ModalNavigationStore modalNavigationStore)
+        protected override void Dispose()
         {
-            ICommand editCommand = new OpenEditCarCommand(car, modalNavigationStore);
-            _carsListingItemViewModels.Add(new CarListingItemViewModel(car, editCommand));
+            _carsStore.CarAdded -= CarsStore_CarAdded;
+            _carsStore.CarUpdated -= CarsStore_CarUpdated;
+
+            base.Dispose();
+        }
+
+        public IEnumerable<CarListingItemViewModel> CarListingItemViewModels => _CarListingItemViewModels;
+
+        private void AddCar(Car car)
+        {
+            CarListingItemViewModel itemViewModel = new CarListingItemViewModel(car, _carsStore, _modalNavigationStore);
+            _CarListingItemViewModels.Add(itemViewModel);
+        }
+
+        private void CarsStore_CarAdded(Car car)
+        {
+            AddCar(car);
+        }
+
+        private void CarsStore_CarUpdated(Car car)
+        {
+            CarListingItemViewModel? carViewModel = _CarListingItemViewModels.FirstOrDefault(entry => entry.Car.Id == car.Id);
+
+            if (carViewModel != null)
+                carViewModel.Update(car);
         }
     }
 }

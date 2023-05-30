@@ -14,7 +14,9 @@ namespace WPFApplication.Commands
             {
                 await ExecuteAsync(parameter);
             }
-            catch (Exception ex) { }
+            catch (Exception) {
+                throw;
+            }
         }
 
         public abstract Task ExecuteAsync(object? parameterr);

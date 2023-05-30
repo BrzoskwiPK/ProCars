@@ -11,16 +11,18 @@ namespace WPFApplication
     {
         private readonly SelectedCarStore _selectedCarStore;
         private readonly ModalNavigationStore _modalNavigationStore;
+        private readonly CarsStore _carsStore;  
 
         public App()
         {
-            _selectedCarStore = new SelectedCarStore();
             _modalNavigationStore = new ModalNavigationStore();
+            _carsStore = new CarsStore();
+            _selectedCarStore = new SelectedCarStore(_carsStore);
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            CarsViewModel carsViewModel = new CarsViewModel(_selectedCarStore, _modalNavigationStore);
+            CarsViewModel carsViewModel = new CarsViewModel(_selectedCarStore, _modalNavigationStore, _carsStore);
 
             MainWindow = new MainWindow()
             {

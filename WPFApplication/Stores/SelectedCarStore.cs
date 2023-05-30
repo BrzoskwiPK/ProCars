@@ -20,5 +20,22 @@ namespace WPFApplication.Stores
         }
 
         public event Action SelectedCarChanged;
+
+        private readonly CarsStore _carsStore;
+
+        public SelectedCarStore(CarsStore carsStore)
+        {
+            _carsStore = carsStore;
+
+            _carsStore.CarUpdated += _carsStore_CarUpdated;
+        }
+
+        private void _carsStore_CarUpdated(Car car)
+        {
+            if (car.Id == SelectedCar?.Id)
+            {
+                SelectedCar = car;
+            }
+        }
     }
 }

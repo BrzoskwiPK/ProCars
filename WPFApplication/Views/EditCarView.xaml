@@ -12,8 +12,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Edit The Car" Style="{StaticResource PageHeader}" FontWeight="UltraBold"/>
+        <TextBlock Grid.Row="0"
+                   Text="Edit The Car"
+                   Style="{StaticResource PageHeader}"
+                   FontWeight="UltraBold"/>
 
-        <components:CarDetailsForm Grid.Row="1" Margin="0 30 0 0" DataContext="{Binding CarDetailsFormViewModel}"/>
+        <components:CarDetailsForm Grid.Row="1"
+                                   Margin="0 30 0 0"
+                                   DataContext="{Binding CarDetailsFormViewModel}"/>
     </Grid>
 </UserControl>

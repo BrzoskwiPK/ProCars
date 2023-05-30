@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WPFApplication.Models;
 using WPFApplication.Stores;
@@ -26,7 +23,7 @@ namespace WPFApplication.Commands
 
             CarDetailsFormViewModel formViewModel = _editCarViewModel.CarDetailsFormViewModel;
 
-            Car car = new Car(
+            Car car = new(
                 _editCarViewModel.CarId,
                 formViewModel.Make,
                 formViewModel.Model,

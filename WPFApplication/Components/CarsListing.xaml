@@ -21,7 +21,9 @@
                     Background="White"
                     CornerRadius="5" />
 
-                <ListView BorderThickness="0" SelectedItem="{Binding SelectedCarListingItemViewModel}" ItemsSource="{Binding CarListingItemViewModels}">
+                <ListView BorderThickness="0"
+                          SelectedItem="{Binding SelectedCarListingItemViewModel}"
+                          ItemsSource="{Binding CarListingItemViewModels}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />

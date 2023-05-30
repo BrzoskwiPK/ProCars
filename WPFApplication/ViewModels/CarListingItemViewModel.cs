@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using WPFApplication.Commands;
 using WPFApplication.Models;
 using WPFApplication.Stores;

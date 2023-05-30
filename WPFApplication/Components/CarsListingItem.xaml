@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFApplication.Components" xmlns:dropdownmenucontrol="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
+             xmlns:dropdownmenucontrol="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border Padding="10" TextBlock.FontSize="16">
@@ -14,8 +14,12 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="{Binding Make}"/>
-            <dropdownmenucontrol:DropdownMenu x:Name="dropdown" Grid.Column="1" Margin="10 0 0 0">
-                <Border Background="White" BorderBrush="Gray" BorderThickness="1">
+            <dropdownmenucontrol:DropdownMenu x:Name="dropdown"
+                                              Grid.Column="1"
+                                              Margin="10 0 0 0">
+                <Border Background="White"
+                        BorderBrush="Gray"
+                        BorderThickness="1">
                     <StackPanel MinWidth="125">
                         <StackPanel.Resources>
                             <Style TargetType="Button">
@@ -30,9 +34,9 @@
                                     <Setter.Value>
                                         <ControlTemplate TargetType="Button">
                                             <Border
-                                                                            Background="{TemplateBinding Background}"
-                                                                            Margin="{TemplateBinding Margin}"
-                                                                            Padding="{TemplateBinding Padding}">
+                                                Background="{TemplateBinding Background}"
+                                                Margin="{TemplateBinding Margin}"
+                                                Padding="{TemplateBinding Padding}">
                                                 <ContentPresenter />
                                             </Border>
                                         </ControlTemplate>
@@ -45,8 +49,8 @@
                                             <BeginStoryboard>
                                                 <Storyboard>
                                                     <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                                                                            To="#c9c9c9"
-                                                                                            Duration="0:0:0.1" />
+                                                                    To="#c9c9c9"
+                                                                    Duration="0:0:0.1" />
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.EnterActions>
@@ -54,8 +58,8 @@
                                             <BeginStoryboard>
                                                 <Storyboard>
                                                     <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                                                                            To="#9e9e9e"
-                                                                                            Duration="0:0:0.1" />
+                                                                    To="#9e9e9e"
+                                                                    Duration="0:0:0.1" />
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.ExitActions>
@@ -63,8 +67,10 @@
                                 </Style.Triggers>
                             </Style>
                         </StackPanel.Resources>
-                        <Button Content="Edit" Command="{Binding EditCommand}"/>
-                        <Button Content="Delete" Command="{Binding DeleteCommand}"/>
+                        <Button Content="Edit"
+                                Command="{Binding EditCommand}"/>
+                        <Button Content="Delete"
+                                Command="{Binding DeleteCommand}"/>
                     </StackPanel>
                 </Border>
             </dropdownmenucontrol:DropdownMenu>

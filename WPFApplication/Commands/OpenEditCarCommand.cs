@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
-using WPFApplication.Models;
+﻿using WPFApplication.Models;
 using WPFApplication.Stores;
 using WPFApplication.ViewModels;
 
@@ -26,7 +20,7 @@ namespace WPFApplication.Commands
         public override void Execute(object? parameter)
         {
             Car car = _carListingItemViewModel.Car;
-            EditCarViewModel editCarViewModel = new EditCarViewModel(car, _carsStore, _modalNavigationStore);
+            EditCarViewModel editCarViewModel = new(car, _carsStore, _modalNavigationStore);
             _modalNavigationStore.CurrentViewModel = editCarViewModel;
         }
     }

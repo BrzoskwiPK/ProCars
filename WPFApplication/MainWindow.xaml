@@ -5,9 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApplication"
         xmlns:views="clr-namespace:WPFApplication.Views"
+        xmlns:vms="clr-namespace:WPFApplication.ViewModels"
+        xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <views:CarsView />
-    </Grid>
+        Title="RaceCars" Height="720" Width="1280" FontSize="14">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vms:AddCarViewModel}">
+            <views:AddCarView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:EditCarViewModel}">
+            <views:EditCarView />
+        </DataTemplate>
+    </Window.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}">
+                <ContentControl Margin="50 25" Content="{Binding CurrentModalViewModel}" />
+            </modalcontrol:Modal>
+            <views:CarsView DataContext="{Binding CarsViewModel}" />
+        </Grid>
+    </ScrollViewer>
 </Window>

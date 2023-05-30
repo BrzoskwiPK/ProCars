@@ -14,6 +14,7 @@ namespace WPFApplication.ViewModels
         private readonly ObservableCollection<CarListingItemViewModel> _carsListingItemViewModels;
         private readonly SelectedCarStore _selectedCarStore;
         private CarListingItemViewModel _selectedCarListingItemViewModel;
+
         public CarListingItemViewModel SelectedCarListingItemViewModel
         {
             get

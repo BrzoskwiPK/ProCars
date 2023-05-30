@@ -15,10 +15,10 @@ namespace WPFApplication.ViewModels
 
         public ICommand AddCarCommand { get; }
 
-        public CarsViewModel(SelectedCarStore _selectedCarStore)
+        public CarsViewModel(SelectedCarStore selectedCarStore)
         {
-            CarsListingViewModel = new CarsListingViewModel(_selectedCarStore);
-            CarsDetailsViewModel = new CarsDetailsViewModel(_selectedCarStore);
+            CarsListingViewModel = new CarsListingViewModel(selectedCarStore);
+            CarsDetailsViewModel = new CarsDetailsViewModel(selectedCarStore);
         }
     }
 }

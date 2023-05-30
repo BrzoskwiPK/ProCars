@@ -15,8 +15,9 @@ namespace WPFApplication.ViewModels
 
         public AddCarViewModel(ModalNavigationStore modalNavigationStore)
         {
+            ICommand submitCommand = new AddCarCommand(modalNavigationStore);
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
-            CarDetailsFormViewModel = new CarDetailsFormViewModel(null, cancelCommand);
+            CarDetailsFormViewModel = new CarDetailsFormViewModel(submitCommand, cancelCommand);
         }
     }
 }

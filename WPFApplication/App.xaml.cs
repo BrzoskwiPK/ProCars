@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WPFApplication.Stores;
 using WPFApplication.ViewModels;
 
 namespace WPFApplication
@@ -8,11 +9,18 @@ namespace WPFApplication
     /// </summary>
     public partial class App : Application
     {
+        private readonly SelectedCarStore _selectedCarStore;
+
+        public App()
+        {
+            _selectedCarStore = new SelectedCarStore();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             MainWindow = new MainWindow()
             {
-                DataContext = new CarsViewModel()
+                DataContext = new CarsViewModel(_selectedCarStore)
             };
 
             MainWindow.Show();

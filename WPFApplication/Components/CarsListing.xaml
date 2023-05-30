@@ -4,6 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:custom="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
+             xmlns:viewmodels="clr-namespace:WPFApplication.ViewModels"
+             xmlns:local="clr-namespace:WPFApplication.Components"
+             d:DataContext="{d:DesignInstance Type=viewmodels:CarsListingViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -19,8 +22,9 @@
                     x:Name="border"
                     Background="White"
                     CornerRadius="5" />
-                
+
                 <ListView BorderThickness="0"
+                          SelectedItem="{Binding SelectedCarListingItemViewModel}"
                           ItemsSource="{Binding CarsListingItemViewModels}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">

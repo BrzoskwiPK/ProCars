@@ -38,11 +38,10 @@
             <components:CarsListing Grid.Column="0"
                                     Margin="20"
                                     DataContext="{Binding CarsListingViewModel}" />
-            
+
             <components:CarsDetails Grid.Column="1"
                                     Margin="20"
                                     DataContext="{Binding CarsDetailsViewModel}" />
-
         </Grid>
     </Grid>
 </UserControl>

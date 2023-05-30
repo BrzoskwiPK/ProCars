@@ -3,28 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFApplication.Models;
+using WPFApplication.Stores;
 
 namespace WPFApplication.ViewModels
 {
-    public class CarsDetailsViewModel
+    public class CarsDetailsViewModel : ViewModelBase
     {
-        public string Make { get; }
-        public string Model { get; }
-        public int Year { get; }
-        public string Color { get; }
-        public int Mileage { get; }
-        public string Engine { get; }
-        public decimal Price { get; }
+        private readonly SelectedCarStore _selectedCarStore;
 
-        public CarsDetailsViewModel()
+        private Car SelectedCar => _selectedCarStore.SelectedCar;
+
+        public bool HasSelectedCar => SelectedCar != null;
+        public string Make => SelectedCar?.Make ?? "Unknown";
+        public string Model => SelectedCar?.Model ?? "Unknown";
+        public int Year => SelectedCar?.Year ?? 0;
+        public string Color => SelectedCar?.Color ?? "Unknown";
+        public int Mileage => SelectedCar?.Mileage ?? 0;
+        public string Engine => SelectedCar?.Engine ?? "Unknown";
+        public decimal Price => SelectedCar?.Price ?? 0;
+
+        public CarsDetailsViewModel(SelectedCarStore selectedCarStore)
         {
-            Make = "Toyota";
-            Model = "Supra";
-            Year = 1960;
-            Color = "Red";
-            Mileage = 192000;
-            Engine = "V8";
-            Price = 120500;
+            _selectedCarStore = selectedCarStore;
+
+            _selectedCarStore.SelectedCarChanged += SelectedCarStore_SelectedCarChanged;
+        }
+
+        protected override void Dispose()
+        {
+            _selectedCarStore.SelectedCarChanged -= SelectedCarStore_SelectedCarChanged;
+
+            base.Dispose();
+        }
+
+        private void SelectedCarStore_SelectedCarChanged()
+        {
+            OnPropertyChanged(nameof(HasSelectedCar));
+            OnPropertyChanged(nameof(Make));
+            OnPropertyChanged(nameof(Model));
+            OnPropertyChanged(nameof(Year));
+            OnPropertyChanged(nameof(Color));
+            OnPropertyChanged(nameof(Mileage));
+            OnPropertyChanged(nameof(Engine));
+            OnPropertyChanged(nameof(Price));
         }
     }
 }

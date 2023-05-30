@@ -1,9 +1,12 @@
 ﻿using System.Windows.Input;
+using WPFApplication.Models;
 
 namespace WPFApplication.ViewModels
 {
     public class CarListingItemViewModel : ViewModelBase
     {
+        public Car Car { get; }
+
         public string Make { get;  }
         public string Model { get; }
         public string Engine { get; }
@@ -15,15 +18,9 @@ namespace WPFApplication.ViewModels
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
-        public CarListingItemViewModel(string make, string model, string engine, int year, int mileage, string color, decimal price)
+        public CarListingItemViewModel(Car car)
         {
-            Make = make;
-            Model = model;
-            Engine = engine;
-            Year = year;
-            Mileage = mileage;
-            Color = color;
-            Price = price;
+            Car = car;
         }
     }
 }

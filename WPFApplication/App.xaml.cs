@@ -66,7 +66,6 @@ namespace WPFApplication
 
             MainWindow.Show();
 
-            base.OnStartup(e);
         }
     }
 

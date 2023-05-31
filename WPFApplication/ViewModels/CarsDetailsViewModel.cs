@@ -6,7 +6,6 @@ namespace WPFApplication.ViewModels
     public class CarsDetailsViewModel : ViewModelBase
     {
         private readonly SelectedCarStore _selectedCarStore;
-
         private Car SelectedCar => _selectedCarStore.SelectedCar;
 
         public bool HasSelectedCar => SelectedCar != null;

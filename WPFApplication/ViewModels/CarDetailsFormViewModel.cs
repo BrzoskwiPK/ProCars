@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
 namespace WPFApplication.ViewModels
 {
@@ -126,7 +127,7 @@ namespace WPFApplication.ViewModels
             !Year.Equals(null);
 
         public ICommand SubmitCommand { get; }
-
         public ICommand CancelCommand { get; }
+
     }
 }

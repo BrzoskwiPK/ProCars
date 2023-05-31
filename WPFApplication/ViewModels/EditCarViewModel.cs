@@ -13,10 +13,10 @@ namespace WPFApplication.ViewModels
 
         public EditCarViewModel(Car car, CarsStore carsStore, ModalNavigationStore modalNavigationStore)
         {
-
             CarId = car.Id;
-            ICommand submitCommand = new EditCarCommand(this, carsStore, modalNavigationStore);
+
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
+            ICommand submitCommand = new EditCarCommand(this, carsStore, modalNavigationStore);
 
             CarDetailsFormViewModel = new CarDetailsFormViewModel(submitCommand, cancelCommand)
             {

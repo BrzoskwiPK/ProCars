@@ -8,24 +8,25 @@ namespace WPFApplication.ViewModels
     public class CarListingItemViewModel : ViewModelBase
     {
         public Car Car { get; private set; }
+        public string Make => Car.Make;
+        public string Model => Car.Model;
+        public string Engine => Car.Engine;
+        public int Year => Car.Year;
+        public int Mileage => Car.Mileage;
+        public string Color => Car.Color;
+        public decimal Price => Car.Price;
 
-        public string Make { get;  }
-        public string Model { get; }
-        public string Engine { get; }
-        public int Year { get; }
-        public int Mileage { get; }
-        public string Color { get; }
-        public decimal Price { get; }
-
+        
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
+
 
         public CarListingItemViewModel(Car car, CarsStore carsStore, ModalNavigationStore modalNavigationStore)
         {
             Car = car;
 
             EditCommand = new OpenEditCarCommand(this, carsStore, modalNavigationStore);
-            
+            DeleteCommand = new DeleteCarCommand(this, carsStore);
         }
 
         public void Update(Car car)

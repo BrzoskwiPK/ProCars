@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System.Windows;
 using WPFApplication.Domain.Commands;
 using WPFApplication.Domain.Queries;
@@ -29,7 +30,11 @@ namespace WPFApplication
         {
             string connectionString = "Data Source=ProCars.db";
 
-            _carsDbContextFactory = new CarsDbContextFactory(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
+            _carsDbContextFactory = new CarsDbContextFactory(
+                new DbContextOptionsBuilder()
+                .UseSqlite(connectionString)
+                .Options
+            );
             _modalNavigationStore = new ModalNavigationStore();
             _getAllCarsQuery = new GetAllCarsQuery(_carsDbContextFactory);
             _createCarCommand = new CreateCarCommand(_carsDbContextFactory);
@@ -41,7 +46,12 @@ namespace WPFApplication
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            CarsViewModel carsViewModel = new CarsViewModel(_selectedCarStore, _modalNavigationStore, _carsStore);
+            using (CarsDbContext carsDbContext = _carsDbContextFactory.Create())
+            {
+                carsDbContext.Database.Migrate();
+            }
+
+            CarsViewModel carsViewModel = new CarsViewModel(_carsStore, _selectedCarStore, _modalNavigationStore);
 
             MainWindow = new MainWindow()
             {

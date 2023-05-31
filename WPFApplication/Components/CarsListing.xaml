@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:viewmodels="clr-namespace:WPFApplication.ViewModels" xmlns:local="clr-namespace:WPFApplication.Components"
-             d:DataContext="{d:DesignInstance Type=viewmodels:CarsListingViewModel}"
+             xmlns:custom="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
+             xmlns:viewmodels="clr-namespace:WPFApplication.ViewModels" xmlns:local="clr-namespace:WPFApplication.Components" d:DataContext="{d:DesignInstance Type=viewmodels:CarsListingViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -21,9 +21,7 @@
                     Background="White"
                     CornerRadius="5" />
 
-                <ListView BorderThickness="0"
-                          SelectedItem="{Binding SelectedCarListingItemViewModel}"
-                          ItemsSource="{Binding CarListingItemViewModels}">
+                <ListView BorderThickness="0" SelectedItem="{Binding SelectedCarListingItemViewModel}" ItemsSource="{Binding CarsListingItemViewModels}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using System.Windows;
 using WPFApplication.Domain.Commands;
 using WPFApplication.Domain.Queries;
@@ -12,7 +11,7 @@ using WPFApplication.ViewModels;
 namespace WPFApplication
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Represents the entry point for the application.
     /// </summary>
     public partial class App : Application
     {
@@ -26,6 +25,9 @@ namespace WPFApplication
         private readonly IUpdateCarCommand _updateCarCommand;
         private readonly IDeleteCarCommand _deleteCarCommand;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="App"/> class.
+        /// </summary>
         public App()
         {
             string connectionString = "Data Source=ProCars.db";
@@ -44,6 +46,10 @@ namespace WPFApplication
             _selectedCarStore = new SelectedCarStore(_carsStore);
         }
 
+        /// <summary>
+        /// Called when the application starts up.
+        /// </summary>
+        /// <param name="e">The event data for the startup event.</param>
         protected override void OnStartup(StartupEventArgs e)
         {
             using (CarsDbContext carsDbContext = _carsDbContextFactory.Create())
@@ -63,4 +69,5 @@ namespace WPFApplication
             base.OnStartup(e);
         }
     }
+
 }

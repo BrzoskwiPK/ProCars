@@ -6,18 +6,29 @@ using WPFApplication.ViewModels;
 
 namespace WPFApplication.Commands
 {
+    /// <summary>
+    /// Represents a command for adding a car.
+    /// </summary>
     public class AddCarCommand : AsyncCommandBase
     {
         private readonly AddCarViewModel _addCarViewModel;
         private readonly CarsStore _carsStore;
         private readonly ModalNavigationStore _modalNavigationStore;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddCarCommand"/> class.
+        /// </summary>
+        /// <param name="addCarViewModel">The view model for adding a car.</param>
+        /// <param name="carsStore">The store for managing cars.</param>
+        /// <param name="modalNavigationStore">The store for modal navigation.</param>
         public AddCarCommand(AddCarViewModel addCarViewModel, CarsStore carsStore, ModalNavigationStore modalNavigationStore)
         {
             _addCarViewModel = addCarViewModel;
             _carsStore = carsStore;
             _modalNavigationStore = modalNavigationStore;
         }
+
+        /// <inheritdoc/>
         public override async Task ExecuteAsync(object? parameterr)
         {
             CarDetailsFormViewModel formViewModel = _addCarViewModel.CarDetailsFormViewModel;

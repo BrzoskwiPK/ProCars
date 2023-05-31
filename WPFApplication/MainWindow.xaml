@@ -8,7 +8,7 @@
         xmlns:vms="clr-namespace:WPFApplication.ViewModels"
         xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
-        Title="RaceCars" Height="720" Width="1280" FontSize="14">
+        Title="ProCars" Height="720" Width="1280" FontSize="14">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vms:AddCarViewModel}">
             <views:AddCarView />

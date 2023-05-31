@@ -1,19 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace WPFApplication.EntityFramework
 {
-    public class CarsDbContextFactory
+    public class CarsDesignTimeDbContextFactory : IDesignTimeDbContextFactory<CarsDbContext>
     {
-        private readonly DbContextOptions _options;
-
-        public CarsDbContextFactory(DbContextOptions options)
+        public CarsDbContext CreateDbContext(string[] args = null)
         {
-            _options = options;
-        }
-
-        public CarsDbContext Create()
-        {
-            return new CarsDbContext(_options);
+            return new CarsDbContext(new DbContextOptionsBuilder().UseSqlite("Data Source=ProCars.db").Options);
         }
     }
 }
